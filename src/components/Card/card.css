@@ -1,0 +1,80 @@
+.card {
+  background-color: var(--neutral-white);
+  border-radius: 10px;
+  color: var(--neutral-grayish-blue);
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  min-width: 300px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+}
+
+.profile-pic {
+  height: 40px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.card-header .username {
+  color: var(--neutral-dark-blue);
+  font-weight: bold;
+}
+
+.card-header .current-user {
+  background-color: var(--primary-Moderate-blue);
+  font-weight: 700;
+  color: var(--neutral-white);
+  border-radius: 0.2em;
+  padding-inline: 0.25em;
+}
+
+.card-content .replying-to {
+  color: var(--primary-Moderate-blue);
+  font-weight: bold;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--neutral-light-gray);
+  border-radius: 10px;
+}
+
+.stepper button {
+  padding: 1.25em 1.25em;
+  display: inline-flex;
+}
+
+.stepper span {
+  color: var(--primary-Moderate-blue);
+  font-weight: bold;
+}
+
+@media (min-width: 500px) {
+  .card {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .card-actions {
+    align-items: flex-start;
+  }
+
+  .stepper {
+    flex-direction: column;
+  }
+}
