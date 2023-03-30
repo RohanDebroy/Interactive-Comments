@@ -1,0 +1,35 @@
+.card-header .action-modify {
+  display: none;
+  margin-left: auto;
+}
+
+.action-modify {
+  display: flex;
+  gap: 10px;
+}
+
+.action-modify .action-btn {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 10px;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.edit {
+  color: var(--primary-Moderate-blue);
+}
+
+.delete {
+  color: var(--primary-soft-red);
+}
+
+@media (min-width: 500px) {
+  .card-actions .action-modify {
+    display: none;
+  }
+
+  .card-header .action-modify {
+    display: flex;
+  }
+}
