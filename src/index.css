@@ -1,0 +1,38 @@
+:root {
+  font-family: "Rubik", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --primary-Moderate-blue: hsl(238, 40%, 52%);
+  --primary-soft-red: hsl(358, 79%, 66%);
+  --primary-light-grayish-blue: hsl(239, 57%, 85%);
+  --primary-pale-red: hsl(357, 100%, 86%);
+  --neutral-dark-blue: hsl(212, 24%, 26%);
+  --neutral-grayish-blue: hsl(211, 10%, 45%);
+  --neutral-light-gray: hsl(223, 19%, 93%);
+  --neutral-very-light-gray: hsl(228, 33%, 97%);
+  --neutral-white: hsl(0, 0%, 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--neutral-light-gray);
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
