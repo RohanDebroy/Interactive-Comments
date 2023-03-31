@@ -49,9 +49,25 @@ const reducer = (state: any, action: any) => {
         user: (state as IRoot).currentUser,
       });
       return { ...state, comments: temp };
-    case "Edit":
-      console.log(payload);
-      return state;
+    case "UPDATE":
+      const temp4 = (state as IRoot).comments;
+      const { id: updateId, content, replyId: updateReplyId } = payload;
+      if (updateReplyId) {
+        temp4.forEach((comment) => {
+          if (comment.replies) {
+            comment.replies.forEach((reply) => {
+              if (reply.id !== updateReplyId) return;
+              reply.content = content;
+            });
+          }
+        });
+      } else {
+        temp4.forEach((comment) => {
+          if (comment.id !== updateId) return;
+          comment.content = content;
+        });
+      }
+      return { ...state, comments: temp4 };
     case "DELETE":
       let temp3 = (state as IRoot).comments;
       const { deleteId, parentId } = payload;

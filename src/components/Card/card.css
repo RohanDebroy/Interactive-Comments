@@ -82,3 +82,13 @@
     flex-direction: column;
   }
 }
+
+.edit-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.edit-comment button {
+  align-self: flex-end;
+}

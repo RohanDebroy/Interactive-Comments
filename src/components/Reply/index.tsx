@@ -13,8 +13,10 @@ const Reply: FC<ReplyProps> = ({ onComment, userProfile }) => {
       onSubmit={(e) => {
         e.preventDefault();
         const comment = e.currentTarget["comment"].value;
-        onComment?.(comment);
-        e.currentTarget.reset();
+        if (comment !== "") {
+          onComment?.(comment);
+          e.currentTarget.reset();
+        }
       }}
     >
       <img src={userProfile} alt="" />
@@ -25,7 +27,9 @@ const Reply: FC<ReplyProps> = ({ onComment, userProfile }) => {
         id=""
         rows={4}
       />
-      <button type="submit">SEND</button>
+      <button className="reply-btn" type="submit">
+        SEND
+      </button>
     </form>
   );
 };

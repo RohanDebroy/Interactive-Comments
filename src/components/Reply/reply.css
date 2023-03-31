@@ -4,7 +4,7 @@
   border-radius: 5px;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  gap: .5em
+  gap: 0.5em;
 }
 
 textarea {
@@ -22,12 +22,12 @@ textarea {
   grid-row-start: 2;
 }
 
-.reply-comp-container button {
+.reply-btn {
   background-color: var(--primary-Moderate-blue);
   color: var(--neutral-white);
   border-radius: 5px;
   cursor: pointer;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   max-width: fit-content;
   height: fit-content;
   grid-row: 2;

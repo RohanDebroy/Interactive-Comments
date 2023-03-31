@@ -38,7 +38,15 @@ const Comment: FC<CommentProps> = ({ replies, ...props }) => {
               deleteId: props.id,
             });
           }}
-          onEdit={() => {}}
+          onUpdate={(comment) => {
+            dispatch({
+              type: "UPDATE",
+              payload: {
+                id: props.id,
+                content: comment,
+              },
+            });
+          }}
           onReply={() => {
             setShowReply(true);
             setReplyData((prev) => ({
@@ -65,6 +73,16 @@ const Comment: FC<CommentProps> = ({ replies, ...props }) => {
               {!!replies &&
                 replies.map((reply) => (
                   <Card
+                    onUpdate={(comment) => {
+                      dispatch({
+                        type: "UPDATE",
+                        payload: {
+                          id: props.id,
+                          content: comment,
+                          replyId: reply.id,
+                        },
+                      });
+                    }}
                     key={reply.id}
                     currentUser={props.currentUser}
                     onStepperChange={(value) => {
