@@ -47,6 +47,15 @@ const Comment: FC<CommentProps> = ({ replies, ...props }) => {
               replyingTo: props.user.username,
             }));
           }}
+          onStepperChange={(value) => {
+            dispatch({
+              type: "STEPPER",
+              payload: {
+                id: props.id,
+                score: value,
+              },
+            });
+          }}
           {...props}
         />
         {(showReply || (!!replies && !!replies.length)) && (
@@ -58,6 +67,16 @@ const Comment: FC<CommentProps> = ({ replies, ...props }) => {
                   <Card
                     key={reply.id}
                     currentUser={props.currentUser}
+                    onStepperChange={(value) => {
+                      dispatch({
+                        type: "STEPPER",
+                        payload: {
+                          id: props.id,
+                          score: value,
+                          replyId: reply.id,
+                        },
+                      });
+                    }}
                     onReply={() => {
                       setShowReply(true);
                       setReplyData((prev) => ({

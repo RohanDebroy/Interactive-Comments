@@ -18,6 +18,27 @@ const reducer = (state: any, action: any) => {
   const { type, payload } = action;
 
   switch (type) {
+    case "STEPPER":
+      let temp5 = (state as IRoot).comments;
+      const { id, score, replyId } = payload;
+      if (replyId) {
+        temp5.forEach((comment) => {
+          if (comment.replies) {
+            comment.replies.forEach((reply) => {
+              if (reply.id !== replyId) return;
+              reply.score = score;
+            });
+          }
+        });
+      } else {
+        temp5 = temp5.map((comment) => {
+          if (comment.id !== id) return comment;
+          const newData = { ...comment, score: score };
+          return newData;
+        });
+      }
+
+      return { ...state, comments: temp5 };
     case "CREATE":
       const temp = (state as IRoot).comments;
       temp.push({

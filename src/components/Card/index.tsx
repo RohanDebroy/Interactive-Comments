@@ -4,10 +4,10 @@ import UserActions, { UserActionsProps } from "../UserActions";
 import { IComment, ICurrentUser } from "../../types";
 
 const Card: FC<
-  IComment & { currentUser: ICurrentUser } & Omit<
-      UserActionsProps,
-      "isCurrentUser"
-    >
+  IComment & {
+    currentUser: ICurrentUser;
+    onStepperChange: (value: number) => void;
+  } & Omit<UserActionsProps, "isCurrentUser">
 > = ({
   content,
   createdAt,
@@ -17,9 +17,19 @@ const Card: FC<
   currentUser,
   replies,
   id,
+  onStepperChange,
   ...userActionProps
 }) => {
   const isCurrentUser = currentUser?.username === user?.username;
+  const handleStepper = (decrement?: boolean) => {
+    let newValue = 0;
+    if (decrement) {
+      newValue = score - 1;
+    } else {
+      newValue = score + 1;
+    }
+    onStepperChange?.(newValue);
+  };
   return (
     <div className="card">
       <div className="card-content">
@@ -41,11 +51,11 @@ const Card: FC<
       </div>
       <div className="card-actions">
         <div className="stepper">
-          <button>
-            <img src="/images/icon-plus.svg" alt="" />
+          <button onClick={() => handleStepper(true)}>
+            <img src="/images/icon-minus.svg" alt="" />
           </button>
           <span>{score}</span>
-          <button>
+          <button onClick={() => handleStepper()}>
             <img src="/images/icon-plus.svg" alt="" />
           </button>
         </div>
