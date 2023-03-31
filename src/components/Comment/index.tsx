@@ -4,10 +4,12 @@ import Card from "../Card";
 import Reply from "../Reply";
 import "./comment.css";
 import { useCommentContext } from "../../store";
+import DeleteModal from "../DeleteModal";
 
 type CommentProps = IComment & { currentUser: ICurrentUser };
 
 const Comment: FC<CommentProps> = ({ replies, ...props }) => {
+  const [show, setShow] = useState(false);
   const { dispatch } = useCommentContext();
   const [showReply, setShowReply] = useState(false);
   const [replyData, setReplyData] = useState<IComment>({
@@ -24,17 +26,16 @@ const Comment: FC<CommentProps> = ({ replies, ...props }) => {
     },
     replyingTo: "",
   });
+  const [deleteData, setDeleteData] = useState<any>({});
 
   return (
     <>
       <div style={{ display: "flex", flexDirection: "column", gap: "1em" }}>
         <Card
           onDelete={() => {
-            dispatch({
-              type: "DELETE",
-              payload: {
-                deleteId: props.id,
-              },
+            setShow(true);
+            setDeleteData({
+              deleteId: props.id,
             });
           }}
           onEdit={() => {}}
@@ -66,12 +67,10 @@ const Comment: FC<CommentProps> = ({ replies, ...props }) => {
                       }));
                     }}
                     onDelete={() => {
-                      dispatch({
-                        type: "DELETE",
-                        payload: {
-                          deleteId: reply.id,
-                          parentId: props.id,
-                        },
+                      setShow(true);
+                      setDeleteData({
+                        deleteId: reply.id,
+                        parentId: props.id,
                       });
                     }}
                     {...reply}
@@ -97,6 +96,19 @@ const Comment: FC<CommentProps> = ({ replies, ...props }) => {
           </div>
         )}
       </div>
+      <DeleteModal
+        show={show}
+        setModal={(value) => {
+          setDeleteData({});
+          setShow(value);
+        }}
+        onDelete={() => {
+          dispatch({
+            type: "DELETE",
+            payload: deleteData,
+          });
+        }}
+      />
     </>
   );
 };

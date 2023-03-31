@@ -1,0 +1,50 @@
+#model {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.24);
+  display: grid;
+  place-items: center;
+  padding: 2em;
+}
+
+#model > .content {
+  max-width: 400px;
+  width: 100%;
+  min-height: 200px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+#model p {
+  color: var(--neutral-grayish-blue);
+}
+
+.flex {
+  display: flex;
+  gap: 1em;
+}
+
+#model button {
+  width: fit-content;
+  height: fit-content;
+  padding: 1em 1em;
+  color: white;
+  border-radius: 5px;
+  flex: 1;
+  font-weight: 700;
+}
+
+.no-delete {
+  background: var(--primary-soft-red);
+}
+
+.yes-delete {
+  background: var(--primary-Moderate-blue);
+}
