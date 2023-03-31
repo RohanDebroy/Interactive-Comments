@@ -9,6 +9,10 @@
   min-width: 300px;
 }
 
+.card-content {
+  flex: 1;
+}
+
 .card-header {
   display: flex;
   align-items: center;

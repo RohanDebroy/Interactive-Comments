@@ -1,7 +1,7 @@
 import { FC, MouseEventHandler } from "react";
 import "./userActions.css";
 
-type UserActionsProps = {
+export type UserActionsProps = {
   isCurrentUser: boolean;
   onReply?: MouseEventHandler<HTMLButtonElement>;
   onDelete?: MouseEventHandler<HTMLButtonElement>;

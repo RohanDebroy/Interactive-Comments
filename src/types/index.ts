@@ -1,6 +1,6 @@
 export interface IRoot {
   currentUser: ICurrentUser;
-  comments: Comment[];
+  comments: IComment[];
 }
 
 export interface ICurrentUser {
@@ -14,7 +14,7 @@ export interface IImage {
 }
 
 export interface IComment {
-  id: number;
+  id: string;
   content: string;
   createdAt: string;
   score: number;

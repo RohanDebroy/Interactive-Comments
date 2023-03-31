@@ -1,7 +1,16 @@
+import Comments from "./components/Comments";
 import "./App.css";
+import { useCommentContext } from "./store";
 
 function App() {
-  return <div className="App">Hello World!</div>;
+  const {
+    state: { comments },
+  } = useCommentContext();
+  return (
+    <div className="App">
+      <Comments comments={comments} />
+    </div>
+  );
 }
 
 export default App;

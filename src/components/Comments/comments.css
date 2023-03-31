@@ -1,0 +1,14 @@
+.reply-container {
+  display: flex;
+  gap: 1em;
+  padding-left: 2em;
+}
+.reply-container > hr {
+  opacity: 30%;
+}
+
+.reply-container > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}

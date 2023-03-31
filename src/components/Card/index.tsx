@@ -1,15 +1,23 @@
 import { FC } from "react";
 import "./card.css";
-import UserActions from "../UserActions";
+import UserActions, { UserActionsProps } from "../UserActions";
 import { IComment, ICurrentUser } from "../../types";
 
-const Card: FC<IComment & { currentUser: ICurrentUser }> = ({
+const Card: FC<
+  IComment & { currentUser: ICurrentUser } & Omit<
+      UserActionsProps,
+      "isCurrentUser"
+    >
+> = ({
   content,
   createdAt,
   score,
   user,
   replyingTo,
   currentUser,
+  replies,
+  id,
+  ...userActionProps
 }) => {
   const isCurrentUser = currentUser?.username === user?.username;
   return (
@@ -24,7 +32,7 @@ const Card: FC<IComment & { currentUser: ICurrentUser }> = ({
           <span className="username">{user.username}</span>
           {isCurrentUser && <span className="current-user">you</span>}
           <span className="createdAt">{createdAt}</span>
-          <UserActions isCurrentUser={isCurrentUser} />
+          <UserActions {...userActionProps} isCurrentUser={isCurrentUser} />
         </div>
         <p>
           {!!replyingTo && <span className="replying-to">@{replyingTo}</span>}{" "}
@@ -41,7 +49,7 @@ const Card: FC<IComment & { currentUser: ICurrentUser }> = ({
             <img src="/images/icon-plus.svg" alt="" />
           </button>
         </div>
-        <UserActions isCurrentUser={isCurrentUser} />
+        <UserActions {...userActionProps} isCurrentUser={isCurrentUser} />
       </div>
     </div>
   );

@@ -1,0 +1,12 @@
+.replies-container {
+  display: flex;
+  padding-left: 1em;
+  gap: 1em;
+}
+
+.replies-container > div {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1em;
+  flex: 1;
+}
